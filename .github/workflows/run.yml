@@ -7,15 +7,15 @@ on:
     types: started
   workflow_dispatch:
   schedule:
-    - cron: 35 2 * * *
+    - cron: 20 22,7 * * *
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule' || github.event_name == 'watch' && github.event.repository.owner.id == github.event.sender.id
     environment: user
     steps:
-      - name: 🔀 random delay 0-300 seconds
-        run: sleep $((RANDOM % 301))
+      - name: 🔀 random delay 0-50 seconds
+        run: sleep $((RANDOM % 51))
 
       - name: 🔌 Check out code
         uses: actions/checkout@main
